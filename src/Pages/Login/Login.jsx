@@ -1,22 +1,30 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import 'animate.css';
+
+
 
 export default function Login() {
   return (
     <>
-      <div className="flex justify-center my-8 ">
-        <div className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
-          <h2 className="mb-3 text-3xl font-semibold text-center   bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">
+      <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-2 mb-10 ">
+        <div  className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
+          <h2
+          data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" 
+          className="mb-3 text-3xl font-semibold text-center   bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient   ">
             Login to your account
           </h2>
-          <p className="text-sm text-center dark:text-gray-600">
+          <p
+           data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
+          className="text-sm text-center dark:text-gray-600 ">
             Don't have an account yet?
             <Link to="/register" className="focus:underline hover:underline">
               Register here
             </Link>
           </p>
-          <div className="my-6 space-y-4">
+          <div className="my-6 space-y-3">
             <button
+            data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
               aria-label="Login with Google"
               type="button"
               className="flex items-center justify-center w-full p-4 space-x-4  border rounded-md  
@@ -26,9 +34,10 @@ export default function Login() {
               <p>Login with Google</p>
             </button>
             <button
+            data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
               aria-label="Login with GitHub"
               role="button"
-              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md   hover:bg-accent/80  hover:bg-accent/5 hover:border-accent/5  duration-300"
+              className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md   hover:bg-accent/5 hover:border-accent/5  duration-300"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +56,7 @@ export default function Login() {
           </div>
           <form action="" className="space-y-8">
             <div className="space-y-4">
-              <div className="space-y-2">
+              <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000"  className="space-y-2">
                 <label htmlFor="email" className="block text-sm">
                   Email address
                 </label>
@@ -59,8 +68,8 @@ export default function Login() {
                   className="w-full px-3 py-2 border outline-none rounded-md bg-transparent border-gray-300 text-gray-800 focus:ring-1 focus:ring-accent"
                 />
               </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
+              <div  className="space-y-2">
+                <div   className="flex justify-between">
                   <label htmlFor="password" className="text-sm">
                     Password
                   </label>

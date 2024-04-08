@@ -3,6 +3,7 @@ import RootLayout from "../MainLayout/RootLayout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import GetInTouch from "../Pages/GetInTouch/GetInTouch";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
         {
           path:'/register',
           element:<Register/>
+        },
+        {
+          path:'/GetTouch',
+          element:<GetInTouch/>
         }
         
     ]
