@@ -65,7 +65,7 @@ export default function GetInTouch() {
                 <input
                   type="text"
                   placeholder="your name"
-                  className="block w-full pl-2 py-1.5 bg-transparent  rounded-md ring-1 ring-[#13131326] shadow-sm focus:ring-1 outline-none focus:ring-opacity-75 focus:ring-success/75 "
+                  className="block w-full pl-2 py-1.5 bg-transparent  rounded-md ring-1 ring-[#13131326] shadow-sm focus:ring-1 outline-none focus:ring-opacity-75 focus:ring-accent/75 "
                 />
               </label>
               <label data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" className="block">
@@ -73,7 +73,7 @@ export default function GetInTouch() {
                 <input
                   type="email"
                   placeholder="@gmail"
-                  className="block w-full rounded-md shadow-sm bg-transparent py-1.5 pl-2 outline-none ring-1 ring-[#13131326]  focus:ring-1 focus:ring-opacity-75 focus:ring-success/75"
+                  className="block w-full rounded-md shadow-sm bg-transparent py-1.5 pl-2 outline-none ring-1 ring-[#13131326]  focus:ring-1 focus:ring-opacity-75 focus:ring-accent/75"
                 />
               </label>
               <label data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" className="block">
@@ -81,7 +81,7 @@ export default function GetInTouch() {
                 <textarea
                   placeholder="Enter your text here..."
                   rows="3"
-                  className="block w-full pl-2 rounded-md outline-none bg-transparent ring-1 ring-[#13131326] focus:ring-1 focus:ring-opacity-75 focus:ring-success/75"
+                  className="block w-full pl-2 rounded-md outline-none bg-transparent ring-1 ring-[#13131326] focus:ring-1 focus:ring-opacity-75 focus:ring-accent/75"
                 ></textarea>
               </label>
 

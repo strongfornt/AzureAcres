@@ -7,7 +7,7 @@ import 'animate.css';
 export default function Login() {
   return (
     <>
-      <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-2 mb-10 ">
+      <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-2 mb-8 ">
         <div  className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
           <h2
           data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" 
