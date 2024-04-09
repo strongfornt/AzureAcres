@@ -13,6 +13,7 @@ export default function PrivateRoute({children}) {
     const location = useLocation()
     
 const {user,loading} = useContext(AuthContext);
+
 if(loading){
     return <Spiner/>
 }

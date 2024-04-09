@@ -1,5 +1,5 @@
 /* eslint-disable no-dupe-keys */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
@@ -11,6 +11,7 @@ import toast, { Toaster } from 'react-hot-toast';
 export default function Register() {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const [passToggle, setPassToggle] = useState(false);
+ 
 
   const {
     register,
@@ -40,6 +41,7 @@ export default function Register() {
       reset();
    
   };
+
 
   return (
     <>

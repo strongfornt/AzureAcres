@@ -37,6 +37,7 @@ export default function ContextProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
+        
         console.log("current user", currentUser);
         setUser(currentUser);
         setLoading(false)
@@ -58,7 +59,8 @@ export default function ContextProvider({ children }) {
     updateUserProfile,
     googleLogin,
     logOut,
-    loading
+    loading,
+    setLoading
   };
   return (
     <>

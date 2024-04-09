@@ -1,67 +1,74 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import 'animate.css';
+import "animate.css";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
-import toast, { Toaster } from 'react-hot-toast'; 
+import toast, { Toaster } from "react-hot-toast";
 
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Login() {
-  const location = useLocation()
-  console.log(location.state)
-  const navigate = useNavigate()
+  const location = useLocation();
+ 
+  const navigate = useNavigate();
 
-  const {signInUser,googleLogin,user} = useContext(AuthContext)
+  const { signInUser, googleLogin, user } = useContext(AuthContext);
 
-const handleFormSubmit =(e)=>{
-  e.preventDefault();
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  signInUser(email,password)
-  .then(()=>{
-    toast.success('Logged in successfully')
-  })
-  .catch(()=>{
-    toast.error('invalid password or email')
-  })
- e.target.reset()
-}
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signInUser(email, password)
+      .then(() => {
+        toast.success("Logged in successfully");
+      })
+      .catch(() => {
+        toast.error("invalid password or email");
+      });
+    e.target.reset();
+  };
 
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Logged in successfully");
+      })
+      .catch((err) => {
+        toast.error("invalid password or email");
+        console.log(err, "from goooge");
+      });
+  };
 
-const handleGoogleLogin =()=>{
-  googleLogin()
-  .then(()=> {
-    toast.success('Logged in successfully')
-   
-  })
-  .catch((err)=> {
-    toast.error('invalid password or email')
-    console.log(err,'from goooge')
-  })
-}
-
-useEffect(()=>{
-  if(user){
-    navigate(location.state)
-  }
-},[user])
+  useEffect(() => {
+    if (user) {
+      navigate(location.state);
+    }
+  }, [user]);
 
   return (
     <>
-    <Toaster />
-      <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-2 mb-8 ">
-        <div  className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
+      <Toaster />
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        className="flex justify-center mt-2 mb-8 "
+      >
+        <div className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
           <h2
-          data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" 
-          className="mb-3 text-3xl font-semibold text-center   bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient   ">
+            data-aos="zoom-in"
+            data-aos-delay="500 "
+            data-aos-duration="1000"
+            className="mb-3 text-3xl font-semibold text-center   bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient   "
+          >
             Login to your account
           </h2>
           <p
-           data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
-          className="text-sm text-center dark:text-gray-600 ">
+            data-aos="zoom-in"
+            data-aos-delay="500 "
+            data-aos-duration="1000"
+            className="text-sm text-center dark:text-gray-600 "
+          >
             Don't have an account yet?
             <Link to="/register" className="focus:underline hover:underline">
               Register here
@@ -69,8 +76,10 @@ useEffect(()=>{
           </p>
           <div className="my-6 space-y-3">
             <button
-            onClick={handleGoogleLogin}
-            data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
+              onClick={handleGoogleLogin}
+              data-aos="zoom-in"
+              data-aos-delay="500 "
+              data-aos-duration="1000"
               aria-label="Login with Google"
               type="button"
               className="flex items-center justify-center w-full p-4 space-x-4  border rounded-md  
@@ -80,7 +89,9 @@ useEffect(()=>{
               <p>Login with Google</p>
             </button>
             <button
-            data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
+              data-aos="zoom-in"
+              data-aos-delay="500 "
+              data-aos-duration="1000"
               aria-label="Login with GitHub"
               role="button"
               className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md   hover:bg-accent/5 hover:border-accent/5  duration-300"
@@ -100,9 +111,14 @@ useEffect(()=>{
             <p className="px-3 dark:text-gray-600">OR</p>
             <hr className="w-full dark:text-gray-600" />
           </div>
-          <form onSubmit={handleFormSubmit}  action="" className="space-y-8">
+          <form onSubmit={handleFormSubmit} action="" className="space-y-8">
             <div className="space-y-4">
-              <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000"  className="space-y-2">
+              <div
+                data-aos="zoom-out-right"
+                data-aos-delay="500 "
+                data-aos-duration="1000"
+                className="space-y-2"
+              >
                 <label htmlFor="email" className="block text-sm">
                   Email address
                 </label>
@@ -114,8 +130,8 @@ useEffect(()=>{
                   className="w-full px-3 py-2 border outline-none rounded-md bg-transparent border-gray-300 text-gray-800 focus:ring-1 focus:ring-accent"
                 />
               </div>
-              <div  className="space-y-2">
-                <div   className="flex justify-between">
+              <div className="space-y-2">
+                <div className="flex justify-between">
                   <label htmlFor="password" className="text-sm">
                     Password
                   </label>
@@ -137,12 +153,11 @@ useEffect(()=>{
               </div>
             </div>
             <button
-            type="submit"
-            className="w-full px-8 py-2 font-semibold text-xl rounded-md bg-accent/80 hover:bg-accent dark:text-gray-50"
-          >
-           Login
-          </button>
-        
+              type="submit"
+              className="w-full px-8 py-2 font-semibold text-xl rounded-md bg-accent/80 hover:bg-accent dark:text-gray-50"
+            >
+              Login
+            </button>
           </form>
         </div>
       </div>
