@@ -4,7 +4,7 @@ import { AuthContext } from "../ContextProvider/ContextProvider";
 import profile from "./../assets/house/deFaultProfile1.png";
 
 export default function Navbar() {
-  const { user,logOut } = useContext(AuthContext);
+  const { user,logOut,loading } = useContext(AuthContext);
   const handleLogout =() =>{
     logOut()
     .then(()=>console.log('log out '))
@@ -66,7 +66,25 @@ export default function Navbar() {
           />
         </p>
       </NavLink>
-      {user && (
+      {
+        loading  ?<NavLink
+        to="/profile"
+        onClick={() => setMenu(!menu)}
+        className={({ isActive }) =>
+          isActive
+            ? "  text-accent text-sm font-medium w-fit "
+            : "text-sm text-black/60 font-medium w-fit "
+        }
+      >
+        <p className="relative group overflow-hidden   ">
+          Update Profile
+          <span
+            className="h-[2px] -translate-x-44  group-hover:translate-x-0 transition-transform duration-300
+                     w-full bg-accent inline-flex absolute left-0 bottom-0"
+          />
+        </p>
+      </NavLink> :
+       user&&(
         <NavLink
           to="/profile"
           onClick={() => setMenu(!menu)}
@@ -84,7 +102,9 @@ export default function Navbar() {
             />
           </p>
         </NavLink>
-      )}
+      )
+      }
+     
       <NavLink
         to="/GetTouch"
         onClick={() => setMenu(!menu)}
@@ -182,32 +202,51 @@ export default function Navbar() {
             {navRoute}
           </ul>
         </div>
-        <div className="navbar-end gap-2 hidden lg:flex">
-          {user ? (
-            <>
-              <div className="tooltip-bottom tooltip" data-tip={user?.displayName || 'Name: Null'}>
-                <div className="avatar">
-                  <div className="w-8 rounded-full tooltip ">
-                    <img src={user?.photoURL || profile} />
-                  </div>
+        <div className="navbar-end gap-2 hidden md:flex  ">
+
+          {
+            loading ?   <div className=" flex items-center gap-1">
+            <div className="tooltip-bottom tooltip flex items-center" data-tip={user?.displayName || 'Name: Null'}>
+              <div className="avatar">
+                <div className="w-8 rounded-full tooltip ">
+                  <img src={user?.photoURL || profile} />
                 </div>
               </div>
-              <button 
-              onClick={handleLogout}
-              className=" px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block">
-                <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
-                <span className="relative group-hover:text-white">Logout</span>
-              </button>
-            </>
-          ) : (
-            <Link
-              to="/login"
-              className="    px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
-            >
+            </div>
+            <button 
+            onClick={handleLogout}
+            className=" px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block">
               <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
-              <span className="relative group-hover:text-white">Login</span>
-            </Link>
-          )}
+              <span className="relative group-hover:text-white">Logout</span>
+            </button>
+          </div> :
+            user ? (
+                <div className=" flex  items-center gap-1">
+                  <div className="tooltip-bottom tooltip  flex items-center " data-tip={user?.displayName || 'Name: Null'}>
+                    <div className="avatar">
+                      <div className="w-8 rounded-full tooltip  ">
+                        <img src={user?.photoURL || profile} />
+                      </div>
+                    </div>
+                  </div>
+                  <button 
+                  onClick={handleLogout}
+                  className=" px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block">
+                    <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
+                    <span className="relative group-hover:text-white">Logout</span>
+                  </button>
+                </div>
+              ) : (
+                <Link
+                  to="/login"
+                  className="    px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                >
+                  <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
+                  <span className="relative group-hover:text-white">Login</span>
+                </Link>
+              )
+          }
+     
         </div>
       </div>
     </>

@@ -1,12 +1,57 @@
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import 'animate.css';
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../ContextProvider/ContextProvider";
+import toast, { Toaster } from 'react-hot-toast'; 
 
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
+  const location = useLocation()
+  console.log(location.state)
+  const navigate = useNavigate()
+
+  const {signInUser,googleLogin,user} = useContext(AuthContext)
+
+const handleFormSubmit =(e)=>{
+  e.preventDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  signInUser(email,password)
+  .then(()=>{
+    toast.success('Logged in successfully')
+  })
+  .catch(()=>{
+    toast.error('invalid password or email')
+  })
+ e.target.reset()
+}
+
+
+const handleGoogleLogin =()=>{
+  googleLogin()
+  .then(()=> {
+    toast.success('Logged in successfully')
+   
+  })
+  .catch((err)=> {
+    toast.error('invalid password or email')
+    console.log(err,'from goooge')
+  })
+}
+
+useEffect(()=>{
+  if(user){
+    navigate(location.state)
+  }
+},[user])
+
   return (
     <>
+    <Toaster />
       <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-2 mb-8 ">
         <div  className="w-full max-w-md p-4 rounded-md shadow-sm sm:p-8 ">
           <h2
@@ -24,6 +69,7 @@ export default function Login() {
           </p>
           <div className="my-6 space-y-3">
             <button
+            onClick={handleGoogleLogin}
             data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
               aria-label="Login with Google"
               type="button"
@@ -54,7 +100,7 @@ export default function Login() {
             <p className="px-3 dark:text-gray-600">OR</p>
             <hr className="w-full dark:text-gray-600" />
           </div>
-          <form action="" className="space-y-8">
+          <form onSubmit={handleFormSubmit}  action="" className="space-y-8">
             <div className="space-y-4">
               <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000"  className="space-y-2">
                 <label htmlFor="email" className="block text-sm">
@@ -91,7 +137,7 @@ export default function Login() {
               </div>
             </div>
             <button
-            type="button"
+            type="submit"
             className="w-full px-8 py-2 font-semibold text-xl rounded-md bg-accent/80 hover:bg-accent dark:text-gray-50"
           >
            Login
