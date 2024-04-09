@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import "animate.css";
-
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Register() {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -15,31 +15,35 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    reset,
     // watch,
     formState: { errors },
   } = useForm();
 
   const formSubmit = (data) => {
     const { name, photo, email, password } = data;
-    console.log(email, password);
     createUser(email, password)
       .then((users) => {
         const user = users.user;
+        toast.success('User creation succeeded')
         //update profile
-        updateUserProfile(users.user, {
+        updateUserProfile(user, {
           displayName: name,
           photoURL: photo,
         })
           .then(() => console.log("Profile updated successfully "))
           .catch((err) => console.log("error from Profile Update", err));
-        console.log(user);
+        
       })
-      .catch((err) => console.log("have an error in create", err));
-    alert("success");
+      .catch(() => toast.error('User already exist'))
+
+      reset();
+   
   };
 
   return (
     <>
+      <Toaster />
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -81,7 +85,7 @@ export default function Register() {
                 </label>
                 <input
                   {...register("name")}
-                  required
+                  
                   type="text"
                   name="name"
                   id="name"
@@ -194,6 +198,7 @@ export default function Register() {
           </form>
         </div>
       </div>
+    
     </>
   );
 }
