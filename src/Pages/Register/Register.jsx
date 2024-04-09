@@ -1,36 +1,87 @@
-import { useState } from "react";
+/* eslint-disable no-dupe-keys */
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoEyeOutline } from "react-icons/io5";
 import { FaRegEyeSlash } from "react-icons/fa6";
-import 'animate.css';
+import "animate.css";
+
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../ContextProvider/ContextProvider";
 
 export default function Register() {
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const [passToggle, setPassToggle] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target.email.value);
+  const formSubmit = (data) => {
+    const { name, photo, email, password } = data;
+    console.log(email, password);
+    createUser(email, password)
+      .then((users) => {
+        const user = users.user;
+        //update profile
+        updateUserProfile(users.user, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => console.log("Profile updated successfully "))
+          .catch((err) => console.log("error from Profile Update", err));
+        console.log(user);
+      })
+      .catch((err) => console.log("have an error in create", err));
+    alert("success");
   };
 
   return (
     <>
-      <div data-aos="fade-up"  data-aos-duration="1000" className="flex justify-center mt-0 mb-10 ">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        className="flex justify-center mt-0 mb-10 "
+      >
         <div className="flex flex-col w-full max-w-md p-6  rounded-md sm:p-10 shadow-sm ">
           <div className="mb-4 text-center">
-            <h1 data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" className="my-3 font-bold  text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient
-              ">Register here</h1>
-            <p data-aos="fade-left" data-aos-delay="500 " data-aos-duration="1000" className="text-sm dark:text-gray-600  ">
+            <h1
+              data-aos="zoom-in"
+              data-aos-delay="500 "
+              data-aos-duration="1000"
+              className="my-3 font-bold  text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient
+              "
+            >
+              Register here
+            </h1>
+            <p
+              data-aos="zoom-in-up"
+              data-aos-delay="500 "
+              data-aos-duration="1000"
+              className="text-sm dark:text-gray-600  "
+            >
               Register to get an account
             </p>
           </div>
-          <form onSubmit={handleSubmit} action="" className="space-y-12">
+          <form
+            onSubmit={handleSubmit(formSubmit)}
+            action=""
+            className="space-y-10"
+          >
             <div className="space-y-4">
-              <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000" >
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="500 "
+                data-aos-duration="1000"
+              >
                 <label htmlFor="email" className="block mb-2 text-sm">
                   Name
                 </label>
                 <input
+                  {...register("name")}
+                  required
                   type="text"
                   name="name"
                   id="name"
@@ -38,11 +89,16 @@ export default function Register() {
                   className="w-full px-3 py-2 border rounded-md border-gray-300 bg-transparent text-gray-800 outline-none focus:ring-1 focus:ring-accent/80"
                 />
               </div>
-              <div data-aos="zoom-out-left" data-aos-delay="500 " data-aos-duration="1000">
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="500 "
+                data-aos-duration="1000"
+              >
                 <label htmlFor="email" className="block mb-2 text-sm">
                   Photo Url
                 </label>
                 <input
+                  {...register("photo")}
                   type="text"
                   name="photo"
                   id="photo"
@@ -50,11 +106,17 @@ export default function Register() {
                   className="w-full px-3 py-2 border rounded-md border-gray-300  bg-transparent text-gray-800 outline-none focus:ring-1 focus:ring-accent/80 "
                 />
               </div>
-              <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000" >
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="500 "
+                data-aos-duration="1000"
+              >
                 <label htmlFor="email" className="block mb-2 text-sm">
                   Email address
                 </label>
                 <input
+                  {...register("email")}
+                  required
                   type="email"
                   name="email"
                   id="email"
@@ -62,21 +124,48 @@ export default function Register() {
                   className="w-full px-3 py-2 border rounded-md border-gray-300  bg-transparent text-gray-800 outline-none focus:ring-1 focus:ring-accent/80"
                 />
               </div>
-              <div data-aos="zoom-out-right" data-aos-delay="500 " data-aos-duration="1000" className="relative">
+              <div
+                data-aos="zoom-in"
+                data-aos-delay="500 "
+                data-aos-duration="1000"
+                className="relative"
+              >
                 <div className="flex justify-between mb-2">
                   <label htmlFor="password" className="text-sm">
                     Password
                   </label>
                 </div>
                 <input
+                  required
+                  {...register("password", {
+                    pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
+                      message:
+                        "Password must contain at least one uppercase and lowercase letter",
+                    },
+
+                    minLength: {
+                      value: 6,
+                      message: "password must be at least six characters long",
+                    },
+                  })}
                   type={passToggle ? "text" : "password"}
                   name="password"
                   id="password"
                   placeholder="******"
                   className="w-full px-3 py-2 border rounded-md border-gray-300  bg-transparent text-gray-800 outline-none focus:ring-1 focus:ring-accent/80 "
                 />
+
+                {errors.password && (
+                  <p className="text-sm text-red-600">
+                    {errors.password.message}
+                  </p>
+                )}
                 <button
-                  onClick={() => setPassToggle(!passToggle)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPassToggle(!passToggle);
+                  }}
                   className="absolute top-10 right-2"
                 >
                   {passToggle ? <IoEyeOutline /> : <FaRegEyeSlash />}
@@ -86,16 +175,13 @@ export default function Register() {
             <div className="space-y-2">
               <div>
                 <button
-                 
                   type="submit"
                   className="w-full px-8 py-2 font-semibold text-xl rounded-md bg-accent/80 hover:bg-accent dark:text-gray-50"
                 >
                   Register
                 </button>
               </div>
-              <p
-              data-aos="fade-up" data-aos-delay="500 " data-aos-duration="1000"
-              className="px-6 text-sm text-center dark:text-gray-600">
+              <p className="px-6 text-sm text-center dark:text-gray-600">
                 Already have an account?
                 <Link
                   to="/login"
@@ -103,7 +189,6 @@ export default function Register() {
                 >
                   Login
                 </Link>
-                .
               </p>
             </div>
           </form>

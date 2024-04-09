@@ -1,7 +1,7 @@
 export default function GetInTouch() {
   return (
     <>
-      <div data-aos="fade-up"  data-aos-duration="1000" className="  min-h-[calc(100vh-120px)] flex flex-col items-center justify-center">
+      <div data-aos="fade-up"  data-aos-duration="1000" className="  min-h-[calc(100vh-110px)] flex flex-col items-center justify-center">
         <section className="py-6  w-full">
           <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
             <div className="py-6 md:py-0 md:px-6">

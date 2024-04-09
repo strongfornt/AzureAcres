@@ -4,6 +4,6 @@
 export default function Home() {
 
   return (
-    <div>Home  </div>
+    <div className="min-h-[calc(100vh-80px)] "  >Home  </div>
   )
 }
