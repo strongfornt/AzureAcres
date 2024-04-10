@@ -25,6 +25,7 @@ export default function ContextProvider({ children }) {
   };
   const updateUserProfile = (user, update) => {
     return updateProfile(user, update);
+    
   };
   const googleLogin =()=>{
   return  signInWithPopup(auth,googleProvider)
@@ -38,9 +39,12 @@ export default function ContextProvider({ children }) {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         
-        console.log("current user", currentUser);
-        setUser(currentUser);
-        setLoading(false)
+        // console.log("current user", currentUser);
+        setTimeout(()=>{
+          setUser(currentUser);
+            setLoading(false)
+        },1000)
+      
       } else {
         setUser(null);
         setLoading(false)
@@ -60,6 +64,7 @@ export default function ContextProvider({ children }) {
     googleLogin,
     logOut,
     loading,
+    setUser,
     setLoading
   };
   return (

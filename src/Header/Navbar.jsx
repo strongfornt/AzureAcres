@@ -11,7 +11,7 @@ export default function Navbar() {
     .catch(()=>console.log('something is wrong'))
   }
 
-  // console.log(user.email);
+  console.log('from navbar',user);
   const navRoute = (
     <>
       <NavLink
