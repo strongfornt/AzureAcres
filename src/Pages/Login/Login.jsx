@@ -7,6 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export default function Login() {
   const location = useLocation();
@@ -36,7 +37,7 @@ export default function Login() {
       })
       .catch((err) => {
         toast.error("invalid password or email");
-        console.log(err, "from goooge");
+        console.log(err, "from google");
       });
   };
 
@@ -48,6 +49,12 @@ export default function Login() {
 
   return (
     <>
+
+    <Helmet>
+    <title>
+    AzureAcres | Login
+    </title>
+    </Helmet>
       <Toaster />
       <div
         data-aos="fade-up"
@@ -70,7 +77,7 @@ export default function Login() {
             className="text-sm text-center dark:text-gray-600 "
           >
             Don't have an account yet?
-            <Link to="/register" className="focus:underline hover:underline">
+            <Link to="/register" className="underline text-violet-600">
               Register here
             </Link>
           </p>
@@ -136,9 +143,8 @@ export default function Login() {
                     Password
                   </label>
                   <a
-                    rel="noopener noreferrer"
-                    href="#"
-                    className="text-xs hover:underline dark:text-gray-600"
+                    
+                    className="text-xs hover:underline dark:text-gray-600 cursor-pointer"
                   >
                     Forgot password?
                   </a>

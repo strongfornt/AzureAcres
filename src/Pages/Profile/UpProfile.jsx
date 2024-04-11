@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import profile from "./../../assets/house/deFaultProfile1.png";
+import { Helmet } from "react-helmet-async";
 
 
 export default function UpProfile() {
@@ -33,6 +34,11 @@ export default function UpProfile() {
 
   return (
     <>
+    <Helmet>
+        <title>
+        AzureAcres | UpdateProfile
+        </title>
+    </Helmet>
       <div
         data-aos="fade-up"
         data-aos-duration="1000"

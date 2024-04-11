@@ -7,6 +7,7 @@ import "animate.css";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from "react-helmet-async";
 
 export default function Register() {
   const { createUser, updateUserProfile } = useContext(AuthContext);
@@ -45,6 +46,11 @@ export default function Register() {
 
   return (
     <>
+    <Helmet>
+      <title>
+      AzureAcres | Register
+      </title>
+    </Helmet>
       <Toaster />
       <div
         data-aos="fade-up"
