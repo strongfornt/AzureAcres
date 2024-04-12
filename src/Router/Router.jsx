@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import GetInTouch from "../Pages/GetInTouch/GetInTouch";
 import PrivateRoute from "../PrivateRouute/PrivateRoute";
 import UpProfile from "../Pages/Profile/UpProfile";
+import Banner from "../Components/Banner/Banner";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
             <UpProfile/>
           </PrivateRoute>
         }
+      
         
     ]
   },
