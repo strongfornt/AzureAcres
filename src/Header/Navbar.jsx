@@ -130,7 +130,7 @@ export default function Navbar() {
  console.log(location);
   return (
     <div className="">
-      <div className={`navbar  px-4 lg:px-10 shadow-sm  ${location.pathname =='/' ? 'bg-[#252121] fixed z-10 shadow-lg':'bg-white'}`}>
+      <div className={`navbar  px-4 lg:px-10 shadow-sm  ${location.pathname =='/' ? 'bg-gray-800 fixed z-10 shadow-lg':'bg-white'}`}>
         {/* menu bar start */}
         <div className=" navbar-start relative gap-2  ">
           <div className="items-center flex   lg:hidden">

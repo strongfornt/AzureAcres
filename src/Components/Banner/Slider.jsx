@@ -1,35 +1,43 @@
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/bundle';
-import './styles.css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/bundle";
+import "./styles.css";
+import { Pagination,Autoplay } from 'swiper/modules';
 // import slide1 from './../../assets/house/VacationRentals2.jpg'
 export default function Slider() {
   return (
     <>
-    <Swiper  className=' w-full' >
-        <SwiperSlide   className=''>
-            <div className=' slide slide2 rounded-xl border-2 border-gray-500       '>
-                {/* <img className='h-full w-full bg-cover' src={slide1} alt="" /> */}
-                <h1>hello</h1>
-            </div>
+      <Swiper 
+       
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+        modules={[Pagination,Autoplay]}
+        
+      className=" w-full">
+        <SwiperSlide className="">
+          <div className=" slide slide1 rounded-xl border-2 border-gray-500       "></div>
         </SwiperSlide>
-        {/* <SwiperSlide>
-            <div className='slide slide2'>
-                <h1>slide1</h1>
-            </div>
+        <SwiperSlide className="">
+          <div className=" slide slide2 rounded-xl border-2 border-gray-500       "></div>
         </SwiperSlide>
-        <SwiperSlide>
-            <div className='slide slide3'>
-                <h1>slide1</h1>
-            </div>
+        <SwiperSlide className="">
+          <div className=" slide slide3 rounded-xl border-2 border-gray-500       "></div>
         </SwiperSlide>
-        <SwiperSlide>
-            <div className='slide slide4'>
-                <h1>slide1</h1>
-            </div>
-        </SwiperSlide> */}
-    </Swiper>
+        <SwiperSlide className="">
+          <div className=" slide slide4 rounded-xl border-2 border-gray-500       "></div>
+        </SwiperSlide>
+        <SwiperSlide className="">
+          <div className=" slide slide5 rounded-xl border-2 border-gray-500       "></div>
+        </SwiperSlide>
+       
+      
+      
+      </Swiper>
     </>
-  )
+  );
 }
