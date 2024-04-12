@@ -2,8 +2,10 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 import profile from "./../assets/house/deFaultProfile1.png";
+import { useLocation } from 'react-router-dom';
 
 export default function Navbar() {
+  const location = useLocation()
   const { user,logOut,loading } = useContext(AuthContext);
   const handleLogout =() =>{
     logOut()
@@ -20,7 +22,7 @@ export default function Navbar() {
         className={({ isActive }) =>
           isActive
             ? " text-accent w-fit text-sm font-medium "
-            : "text-sm w-fit text-black/60 font-medium "
+            : `text-sm w-fit  font-medium ${location.pathname =='/'?'text-white':'text-black/60 '} `
         }
       >
         <p className="relative group overflow-hidden">
@@ -38,7 +40,7 @@ export default function Navbar() {
         className={({ isActive }) =>
           isActive
             ? "text-accent w-fit text-sm font-medium "
-            : "text-sm w-fit text-black/60 font-medium "
+            : `text-sm w-fit ${location.pathname =='/'?'text-white':'text-black/60 '} font-medium `
         }
       >
         <p className="relative group overflow-hidden">
@@ -55,7 +57,7 @@ export default function Navbar() {
         className={({ isActive }) =>
           isActive
             ? "text-accent text-sm font-medium w-fit"
-            : "text-sm text-black/60 font-medium  w-fit"
+            : `text-sm ${location.pathname =='/'?'text-white':'text-black/60 '}  font-medium  w-fit `
         }
       >
         <p className="relative group overflow-hidden">
@@ -73,7 +75,7 @@ export default function Navbar() {
         className={({ isActive }) =>
           isActive
             ? "  text-accent text-sm font-medium w-fit "
-            : "text-sm text-black/60 font-medium w-fit "
+            : ` text-sm ${location.pathname =='/'?'text-white':'text-black/60 '}   font-medium w-fit `
         }
       >
         <p className="relative group overflow-hidden   ">
@@ -91,7 +93,7 @@ export default function Navbar() {
           className={({ isActive }) =>
             isActive
               ? "  text-accent text-sm font-medium w-fit "
-              : "text-sm text-black/60 font-medium w-fit "
+              : ` text-sm ${location.pathname =='/'?'text-white':'text-black/60 '}    font-medium w-fit `
           }
         >
           <p className="relative group overflow-hidden   ">
@@ -111,7 +113,7 @@ export default function Navbar() {
         className={({ isActive }) =>
           isActive
             ? "text-accent text-sm font-medium w-fit"
-            : "text-sm text-black/60 font-medium w-fit "
+            : `text-sm ${location.pathname =='/'?'text-white':'text-black/60 '}  font-medium w-fit `
         }
       >
         <p className="relative group overflow-hidden">
@@ -125,9 +127,10 @@ export default function Navbar() {
     </>
   );
   const [menu, setMenu] = useState(false);
+ console.log(location);
   return (
-    <>
-      <div className="navbar bg-base-100 px-4 lg:px-10 shadow-sm ">
+    <div className="">
+      <div className={`navbar  px-4 lg:px-10 shadow-sm  ${location.pathname =='/' ? 'bg-[#252121] fixed z-10 shadow-lg':'bg-white'}`}>
         {/* menu bar start */}
         <div className=" navbar-start relative gap-2  ">
           <div className="items-center flex   lg:hidden">
@@ -198,7 +201,7 @@ export default function Navbar() {
         {/* menu bar end*/}
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-4 items-center ">
+          <ul className="menu menu-horizontal px-1 gap-4 items-center  ">
             {navRoute}
           </ul>
         </div>
@@ -249,6 +252,6 @@ export default function Navbar() {
      
         </div>
       </div>
-    </>
+    </div>
   );
 }

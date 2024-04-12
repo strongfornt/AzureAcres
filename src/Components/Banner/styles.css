@@ -1,0 +1,27 @@
+.slide {
+    color: rgb(44,44,229);
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slide1 {
+    background-image: url('./../../assets/house/guestHouse1.jpg');
+}
+.slide2 {
+    background-image: url('./../../assets/house/resorts1.jpg');
+}
+.slide3 {
+    background-image: url('./../../assets/house/resorts2.jpg');
+}
+.slide4 {
+    background-image: url('./../../assets/house/resrts3.jpg');
+}
+.slide5 {
+    background-image: url('./../../assets/house/VacationRentals1.jpg');
+}
