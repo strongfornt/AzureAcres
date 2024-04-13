@@ -7,37 +7,49 @@ import GetInTouch from "../Pages/GetInTouch/GetInTouch";
 import PrivateRoute from "../PrivateRouute/PrivateRoute";
 import UpProfile from "../Pages/Profile/UpProfile";
 import Banner from "../Components/Banner/Banner";
+import CardDetails from "../Components/ResidenceCard/CardDetails";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element:<RootLayout/>,
-    children:[
-        {
-            path:'/',
-            element:<Home/>,
-            loader:()=> fetch('/hospitality.json')
-        },
-        {
-          path:'/login',
-          element:<Login/>
-        },
-        {
-          path:'/register',
-          element:<Register/>
-        },
-        {
-          path:'/GetTouch',
-          element:<PrivateRoute><GetInTouch/></PrivateRoute>
-        },
-        {
-          path:'/profile',
-          element:<PrivateRoute>
-            <UpProfile/>
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => fetch("/hospitality.json"),
+      },
+      {
+        path: "/cardDetails/:id",
+        element: <CardDetails />,
+        // eslint-disable-next-line no-unused-vars
+        loader: ({ params }) => fetch("/hospitality.json"),
+      },
+
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/GetTouch",
+        element: (
+          <PrivateRoute>
+            <GetInTouch />
           </PrivateRoute>
-        }
-      
-        
-    ]
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <UpProfile />
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 ]);
