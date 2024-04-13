@@ -4,6 +4,7 @@ import FeaturedIn from "../../Components/FeaturedIn/FeaturedIn";
 import ResidenceCard from "../../Components/ResidenceCard/ResidenceCard";
 
 import Faq from "../../Components/Faq/Faq";
+import Subscribe from "../../Components/Subscribe/Subscribe";
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
       </div>
       <div className="px-4 md:px-8 lg:px-10 my-16 md:my-28 "  >
         <Faq/>
+      </div>
+      <div className="px-4 md:px-8 lg:px-10 my-16 md:my-28 "  >
+        <Subscribe/>
       </div>
     </>
   );
