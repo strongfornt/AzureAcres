@@ -20,7 +20,7 @@
       "status": "sale",
       "area": "2500 sq ft",
       "location": "Whispering Woods, Oregon",
-      "image": "https://i.postimg.cc/QMxZ46xy/loadge1.jpg",
+      "image": "https://i.postimg.cc/Z56gN9kx/lodge2.jpg",
       "facilities": ["Fireplace", "Hiking trails", "Outdoor hot tub", "Picnic area", "Wildlife viewing"]
     },
     {
@@ -32,7 +32,7 @@
       "status": "rent",
       "area": "400 sq ft",
       "location": "Seaside Plaza, Florida",
-      "image": "https://i.postimg.cc/x1FVZvJj/motel1.jpg",
+      "image": "https://i.postimg.cc/wvrFZH8B/motels2.jpg",
       "facilities": ["Free WiFi", "Swimming pool", "24-hour reception", "Parking", "Air conditioning"]
     },
     {
@@ -44,19 +44,19 @@
       "status": "rent",
       "area": "600 sq ft",
       "location": "Alpine Retreat, Colorado",
-      "image": "https://i.postimg.cc/jS8nkF4W/guest-House1.jpg",
+      "image": "https://i.postimg.cc/DwtX9ZmH/guesthouse2.jpg",
       "facilities": ["Private balcony", "Breakfast included", "Mountain bike rental", "Library lounge", "Outdoor BBQ area"]
     },
     {
       "id": "5",
-      "estate_title": "Golden Sands Resort",
+      "estate_title": "Luxury Golden Sands Resort",
       "segment_name": "Resorts",
       "description": "Indulge in the luxury of Golden Sands Resort, where sun-kissed beaches and azure waters create the perfect escape. Immerse yourself in opulence as you unwind in elegantly appointed suites with panoramic ocean views. Dive into crystal-clear waters, lounge by the poolside with a refreshing cocktail, or pamper yourself with rejuvenating spa treatments. With a range of recreational activities and gourmet dining options, Golden Sands Resort promises an unforgettable getaway for discerning travelers.",
       "price": "$700,000",
       "status": "sale",
       "area": "8000 sq ft",
       "location": "Tropical Paradise, Hawaii",
-      "image": "https://i.postimg.cc/RZ7FtbN6/resorts2.jpg",
+      "image": "https://i.postimg.cc/T3TjkhL9/resorts7.jpg",
       "facilities": ["Private beach access", "Fine dining restaurants", "Water sports equipment", "Kids club", "Yoga studio"]
     },
     {
@@ -73,26 +73,26 @@
     },
     {
       "id": "7",
-      "estate_title": "Whispering Meadows Retreat",
+      "estate_title": "Meadows Retreat",
       "segment_name": "Resorts",
       "description": "Find peace and tranquility at Whispering Meadows Retreat. Immerse yourself in nature's embrace amidst rolling hills and meadows. Unwind in spacious suites with panoramic views, indulge in farm-to-table dining, and rejuvenate your senses with holistic wellness experiences. Whether you're strolling through lush gardens or practicing yoga in the open air, Whispering Meadows Retreat offers a sanctuary for body, mind, and spirit.",
       "price": "$600,000",
       "status": "sale",
       "area": "7000 sq ft",
       "location": "Rural Haven, Montana",
-      "image": "https://i.postimg.cc/Qxb5GtJn/resrts3.jpg",
+      "image": "https://i.postimg.cc/VkT6JV8C/resorts8.jpg",
       "facilities": ["Nature trails", "Outdoor fireplace", "Swimming pond", "Gourmet dining", "Yoga pavilion"]
     },
     {
       "id": "8",
-      "estate_title": "Sunny Shores Vacation Villas",
+      "estate_title": "Sunny Vacation Villas",
       "segment_name": "Vacation Rentals",
       "description": "Enjoy the epitome of luxury living at Sunny Shores Vacation Villas. Experience elegance and comfort with stunning oceanfront views. Our exclusive villas boast spacious layouts, stylish decor, and premium amenities for the ultimate vacation experience. Whether you're lounging by the private pool, dining al fresco on the terrace, or exploring the vibrant local culture, Sunny Shores Vacation Villas offers a luxurious retreat for discerning travelers.",
       "price": "$300 per night",
       "status": "rent",
       "area": "1500 sq ft",
       "location": "Sunshine Coast, Florida",
-      "image": "https://i.postimg.cc/wvPjXKHz/Vacation-Rentals2.jpg",
+      "image": "https://i.postimg.cc/rptBQhtx/vecitional-Rentals3.jpg",
       "facilities": ["Private pool", "Beach access", "Outdoor dining area", "Jacuzzi", "Concierge service"]
     },
     {

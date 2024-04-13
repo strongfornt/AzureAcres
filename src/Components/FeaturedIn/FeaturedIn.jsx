@@ -9,7 +9,7 @@ export default function FeaturedIn() {
   return (
     <>
     <div className="mt-5">
-    <h1 className=" font-bold text-4xl sm:text-4xl lg:text-5xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient" >Featured In</h1>
+    <h1 className=" font-bold text-4xl sm:text-4xl lg:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient" >Featured In</h1>
     </div>
       <div className="mt-5 mb-10 " >
         
