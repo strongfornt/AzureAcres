@@ -3,6 +3,7 @@ import {  useLoaderData, useParams } from "react-router-dom";
 import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { statesData } from "./data";
+import { Helmet } from "react-helmet-async";
 // import {stateData} from '../ResidenceCard/data'
 
 export default function CardDetails() {
@@ -27,6 +28,11 @@ export default function CardDetails() {
 const center= [10.771278605629783,106.69012489341263]
   return (
     <>
+     <Helmet>
+    <title>
+    AzureAcres | cardDetails/{id}
+    </title>
+    </Helmet>
       <div className="px-4 md:px-8 lg:px-10">
         <section className=" ">
           <div className="container flex flex-col-reverse justify-center  mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between xl:justify-evenly ">

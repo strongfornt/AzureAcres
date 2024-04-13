@@ -19,7 +19,7 @@ export default function GetInTouch() {
                 Get in <span className="">touch</span>
               </h1>
               <p 
-              data-aos="zoom-in-up" data-aos-delay="500 " data-aos-duration="1000"
+              data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000"
               className="pt-2 pb-4">
               Have questions about our properties or interested in booking your next getaway? Don't hesitate to reach out to us! Our friendly team is here to assist you with any inquiries you may have.
               </p>
