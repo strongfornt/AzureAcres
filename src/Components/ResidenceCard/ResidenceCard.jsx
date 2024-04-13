@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import Card from "./Card";
 
+
 export default function ResidenceCard() {
   const data = useLoaderData();
 
@@ -11,7 +12,7 @@ export default function ResidenceCard() {
           Our Popular Residence
         </h1>
       </div>
-      <div className="mt-5 grid gap-6 md:grid-cols-2  lg:grid-cols-3 lg:gap-6">
+      <div className="mt-5 grid gap-6 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-3 lg:gap-6">
         {data.map((data, idx) => (
           <Card key={idx} data={data} />
         ))}

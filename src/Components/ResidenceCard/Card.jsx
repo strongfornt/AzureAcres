@@ -8,12 +8,14 @@ export default function Card({data}) {
     const {id,estate_title ,segment_name,description,price,status,location,image } = data;
   return (
     <>
-      <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900">
-        <img
+      <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900 ">
+       <div className="rounded-md overflow-hidden">
+       <img
           src={image}
           alt=""
-          className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
+          className="object-cover object-center w-full hover:scale-110 duration-300  transition-all rounded-md h-72 dark:bg-gray-500"
         />
+       </div>
         <div className="mt-6 mb-2">
           <span className="block text-xs font-medium tracking-widest uppercase dark:text-accent">
            {segment_name}

@@ -1,5 +1,9 @@
 import { FaLocationDot } from "react-icons/fa6";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import {  useLoaderData, useParams } from "react-router-dom";
+import { MapContainer, Marker, Polygon, Popup, TileLayer, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import { statesData } from "./data";
+// import {stateData} from '../ResidenceCard/data'
 
 export default function CardDetails() {
   const data = useLoaderData();
@@ -20,6 +24,7 @@ export default function CardDetails() {
     facilities,
   } = dataSingle;
 
+const center= [10.771278605629783,106.69012489341263]
   return (
     <>
       <div className="px-4 md:px-8 lg:px-10">
@@ -58,41 +63,56 @@ export default function CardDetails() {
                 - {description}
               </p>
               <div className="">
-               
-                {/* Open the modal using document.getElementById('ID').showModal() method */}
-                <button
-                  className=""
-                  onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
+             
+                  <h1 className="text-lg font-semibold text-[#383737] " >Facilities --</h1>
+                  <ul className="list-disc list-inside text-base text-[#968f8f] ml-2" >
+                  {
+                    facilities.map((item,idx)=> <li key={idx} >{item}</li> )
                   }
-                >
-                  <button className="    px-2 py-1 relative rounded group overflow-hidden font-medium border-b border-accent text-accent inline-block">
-                    <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
-                    <span className="relative group-hover:text-white">
-                      Facilities --
-                    </span>
-                  </button>
-                </button>
-                <dialog
-                  id="my_modal_5"
-                  className="modal modal-middle sm:modal-middle"
-                >
-                  <div className="modal-box space-x-5 space-y-2">
-                 {
-                  facilities.map((item,idx)=> <button key={idx}  className={`px-4 py-1 bg-accent rounded-md text-white font-semibold `} >
-                  {item}
-                </button>)
-                 }
+                  </ul>
+                 
 
-                
-                    <div className="modal-action">
-                      <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="">Close</button>
-                      </form>
-                    </div>
+
+                 <div className="mt-8">  
+                  <h1 className="text-3xl mb-3 font-bold leading-none sm:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient  " >Location on map -</h1>
+
+
+                  <div className="rounded-xl">
+                    <MapContainer
+                    center={center}
+                    zoom={10}
+                    className="sm:max-w-[100vh]  min-h-[60vh] rounded-xl "
+                    >
+                      <TileLayer 
+                      url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=Y0TI1FEsIrdW6vERNkqU"
+                      attribution="<a href='https://www.maptiler.com/copyright/" target="_blank'>&copy; MapTiler</a> <a href='https://www.openstreetmap.org/copyright' target='_blank'>&copy; OpenStreetMap contributors</a>"
+                      />
+                      
+
+                   {
+                    statesData.features.map((state,idx)=>{
+                     const coordinates= state.geometry.coordinates[0];
+                      return(   <Polygon 
+                        key={idx}
+                        pathOptions={{
+                          fillColor:'#FD8D3C',
+                          fillOpacity:0.7,
+                          weight:2,
+                          opacity:1,
+                          dashArray:3,
+                          color:'white'
+                         
+                        }}
+                        positions={coordinates}
+                        />
+                    
+                      )
+                    })
+                   }
+                    </MapContainer>
                   </div>
-                </dialog>
+                 </div>
+               
               </div>
             </div>
             <div className="flex   items-center lg:px-6 xl:px-0  justify-center rounded-xl  mb-8 lg:mt-0 h-80 sm:h-80 lg:h-80 xl:h-112 2xl:h-128">

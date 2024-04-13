@@ -256,7 +256,7 @@ export default function Navbar() {
               </button>
             </div>
           ) : user ? (
-            <div className=" flex  items-center gap-1">
+            <div className=" flex   items-center gap-1">
               <div
                 className="tooltip-bottom tooltip  flex items-center "
                 data-tip={user?.displayName || "Name: Null"}
