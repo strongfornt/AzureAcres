@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 import profile from "./../assets/house/deFaultProfile1.png";
@@ -9,6 +9,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { SiReactrouter } from "react-icons/si";
 
 export default function Navbar() {
+  const [menu, setMenu] = useState(false);
   const location = useLocation();
   const { user, logOut, loading } = useContext(AuthContext);
   const handleLogout = () => {
@@ -17,19 +18,19 @@ export default function Navbar() {
       .catch(() => console.log("something is wrong"));
   };
 
-  const disableScrolling = () => {
-    const scrollbarWidth = calculateScrollbarWidth();
+  useEffect(() => {
+    if (menu) {
+      const scrollbarWidth = calculateScrollbarWidth();
 
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
 
-    document.body.style.overflow = "hidden";
-  };
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.paddingRight = "0";
 
-  const enableScrolling = () => {
-    document.body.style.paddingRight = "0";
-
-    document.body.style.overflow = "auto";
-  };
+      document.body.style.overflow = "auto";
+    }
+  }, [menu]);
 
   const navRoute = (
     <>
@@ -156,7 +157,6 @@ export default function Navbar() {
       </NavLink>
     </>
   );
-  const [menu, setMenu] = useState(false);
 
   return (
     <div className="">
@@ -175,21 +175,23 @@ export default function Navbar() {
         </div>
         {/* menu bar end*/}
 
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-4 items-center  ">
+        <div className="navbar-center hidden md:flex">
+          <ul
+            onClick={() => setMenu(false)}
+            className="menu menu-horizontal px-1 md:gap-3  lg:gap-4 items-center  "
+          >
             {navRoute}
           </ul>
         </div>
         <div className="navbar-end gap-2 flex  ">
           <OutsideClickHandler onOutsideClick={() => setMenu(false)}>
-            <div className="items-center flex   lg:hidden">
+            <div className="items-center flex   md:hidden">
               <label className=" swap swap-rotate  border-none  ">
                 {/* this hidden checkbox controls the state */}
                 <input
                   type="checkbox"
                   onChange={() => {
                     setMenu(!menu);
-                    menu ? enableScrolling() : disableScrolling();
                   }}
                   checked={menu ? true : false}
                 />
@@ -225,7 +227,7 @@ export default function Navbar() {
 
             <ul
               tabIndex={0}
-              className={`menu absolute mr-6  -top-3 -right-64 min-w-56 menu-sm lg:hidden text-xl  dropdown-content border-l border-t  border-success border-opacity-60 
+              className={`menu absolute mr-6  -top-3 -right-64 min-w-56 menu-sm md:hidden text-xl  dropdown-content border-l border-t  border-success border-opacity-60 
                    mt-3 z-[10] shadow-lg ${
                      location.pathname == "/" ? "bg-gray-800" : "bg-base-100"
                    }  min-h-screen  rounded-l-xl w-max  gap-2    ${
@@ -233,7 +235,7 @@ export default function Navbar() {
               }`}
             >
               {user && (
-                <li className="flex  items-center mt-8   ">
+                <li className="flex  items-center    ">
                   <div className="avatar">
                     <div className="w-10 rounded-full ring-1 ring-accent ring-offset-base-100 ring-offset-2">
                       <img src={user?.photoURL || profile} />
@@ -258,7 +260,7 @@ export default function Navbar() {
                   location.pathname == "/"
                     ? "bg-base-200 text-gray-900 "
                     : "bg-gray-800 text-white"
-                } ${user ?'':'mt-16'} `}
+                } ${user ? "" : "mt-16"} `}
               >
                 <p className={`flex items-center p-2 space-x-3 rounded-md  `}>
                   <SiReactrouter
@@ -336,7 +338,7 @@ export default function Navbar() {
           </OutsideClickHandler>
 
           {loading ? (
-            <div className="  hidden lg:flex items-center gap-1">
+            <div className="  hidden md:flex items-center gap-1">
               <div
                 className="tooltip-bottom tooltip flex items-center"
                 data-tip={user?.displayName || "Anonymous"}
@@ -349,14 +351,14 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className=" hidden lg:flex px-2 py-1   relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                className=" hidden md:flex px-2 py-1   relative rounded group overflow-hidden font-medium border border-accent/20 text-accent "
               >
                 <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
                 <span className="relative group-hover:text-white">Logout</span>
               </button>
             </div>
           ) : user ? (
-            <div className=" lg:flex hidden  items-center gap-1">
+            <div className=" md:flex hidden  items-center gap-1">
               <div
                 className=" tooltip-left md:tooltip-bottom tooltip  flex items-center "
                 data-tip={user?.displayName || "Anonymous"}
@@ -369,7 +371,7 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className=" hidden md:flex px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                className=" hidden md:flex px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent "
               >
                 <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
                 <span className="relative group-hover:text-white">Logout</span>
@@ -378,7 +380,7 @@ export default function Navbar() {
           ) : (
             <Link
               to="/login"
-              className=" lg:flex hidden   px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+              className=" md:flex hidden   px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
             >
               <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
               <span className="relative group-hover:text-white">Login</span>
