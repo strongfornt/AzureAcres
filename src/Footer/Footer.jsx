@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../assets/house/a.png'
 
 export default function Footer() {
@@ -19,21 +20,12 @@ export default function Footer() {
 			<div className="space-y-3">
 				<h3
 				data-aos="fade-down" data-aos-delay="500 " data-aos-duration="1000" 
-				className="tracking-wide uppercase dark:text-gray-900">Product</h3>
+				className="tracking-wide uppercase dark:text-gray-900">Explore</h3>
 				<ul className="space-y-1">
 					<li data-aos="fade-right" data-aos-delay="500 " data-aos-duration="1000" >
-						<a rel="noopener noreferrer" href="#">Features</a>
+						<a rel="noopener noreferrer" href="#">Featured</a>
 					</li>
-					<li
-					data-aos="fade-right" data-aos-delay="1000 " data-aos-duration="1000" 
-					>
-						<a rel="noopener noreferrer" href="#">Integrations</a>
-					</li>
-					<li
-					data-aos="fade-right" data-aos-delay="1500 " data-aos-duration="1000"  
-					>
-						<a rel="noopener noreferrer" href="#">Pricing</a>
-					</li>
+				
 					<li 
 					data-aos="fade-right" data-aos-delay="2000 " data-aos-duration="1000"  
 					>
@@ -47,30 +39,30 @@ export default function Footer() {
 				className="tracking-wide uppercase dark:text-gray-900">Company</h3>
 				<ul className="space-y-1">
 					<li data-aos="fade-up" data-aos-delay="1000 " data-aos-duration="1000" >
-						<a rel="noopener noreferrer" href="#">Privacy</a>
+						<Link to='/'  >Home</Link>
 					</li>
 					<li data-aos="fade-up" data-aos-delay="2400 " data-aos-duration="1000"  >
-						<a rel="noopener noreferrer" href="#">Terms of Service</a>
+						<Link to='/GetTouch'>Get In Touch</Link>
 					</li>
 				</ul>
 			</div>
 			<div className="space-y-3">
 				<h3
 				data-aos="fade-down" data-aos-delay="500 " data-aos-duration="1000" 
-				className="uppercase dark:text-gray-900">Developers</h3>
+				className="uppercase dark:text-gray-900">Contact us</h3>
 				<ul className="space-y-1">
 					<li
 					data-aos="fade-up" data-aos-delay="1000 " data-aos-duration="1000" 
 					>
-						<a rel="noopener noreferrer" href="#">Public API</a>
+						<a rel="noopener noreferrer" href="#">Unknown place, 9999 City</a>
 					</li>
 					<li
 					data-aos="fade-up" data-aos-delay="2000 " data-aos-duration="1000" 
 					>
-						<a rel="noopener noreferrer" href="#">Documentation</a>
+						<a rel="noopener noreferrer" href="#">123456789</a>
 					</li>
 					<li data-aos="fade-up" data-aos-delay="3000 " data-aos-duration="1000"  >
-						<a rel="noopener noreferrer" href="#">Guides</a>
+						<a rel="noopener noreferrer" href="#">contact@azruacres.com</a>
 					</li>
 				</ul>
 			</div>
@@ -109,7 +101,7 @@ export default function Footer() {
 	</div>
 	<div 
 
-	className="py-6 text-sm text-center dark:text-gray-600">© 1968 Company Co. All rights reserved.</div>
+	className="py-6 text-sm text-center dark:text-gray-600">© 2024 Company Co. All rights reserved.</div>
 </footer>
         </>
   )
