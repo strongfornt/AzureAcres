@@ -8,22 +8,40 @@ export default function Card({data}) {
     const {id,estate_title ,segment_name,description,price,status,location,image } = data;
   return (
     <>
-      <div className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900 ">
+      <div 
+      data-aos="zoom-in-up"
+      data-aos-delay="500 "
+      data-aos-duration="1000"
+      className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900 ">
        <div className="rounded-md overflow-hidden">
        <img
+
+
           src={image}
           alt=""
           className="object-cover object-center w-full hover:scale-110 duration-300  transition-all rounded-md h-72 dark:bg-gray-500"
         />
        </div>
         <div className="mt-6 mb-2">
-          <span className="block text-xs font-medium tracking-widest uppercase dark:text-accent">
+          <span 
+          data-aos="zoom-in-right"
+          data-aos-delay="1000 "
+          data-aos-duration="1200"
+          className="block text-xs font-medium tracking-widest uppercase dark:text-accent">
            {segment_name}
           </span>
-          <h2 className="text-xl font-semibold tracking-wide">
+          <h2 
+          data-aos="zoom-in-right"
+          data-aos-delay="1200 "
+          data-aos-duration="1200"
+          className="text-xl font-semibold tracking-wide">
             {estate_title}
           </h2>
-          <p className="flex items-center gap-1 ">
+          <p 
+          data-aos="zoom-in-right"
+          data-aos-delay="1400 "
+          data-aos-duration="1400"
+          className="flex items-center gap-1 ">
             <FaLocationDot className="text-[#6b6565]" />
             <span className="text-base dark:text-gray-800 ">
               {" "}
@@ -32,18 +50,33 @@ export default function Card({data}) {
             </span>
           </p>
         </div>
-        <p className="dark:text-gray-800 text-sm text-white ">
+        <p 
+        data-aos="zoom-in-right"
+        data-aos-delay="1600 "
+        data-aos-duration="1600"
+        className="dark:text-gray-800 text-sm text-white ">
        {description.slice(0,90)}...
         </p>
 
         <div className="flex justify-between items-center ">
-          <p className="mt-2 font-semibold text-gray-800 ">{price}</p>
-          <p className="mt-2 font-semibold text-accent ">
+          <p 
+          data-aos="zoom-in-right"
+          data-aos-delay="1800 "
+          data-aos-duration="1800"
+          className="mt-2 font-semibold text-gray-800 ">{price}</p>
+          <p 
+          data-aos="zoom-in-left"
+          data-aos-delay="1800 "
+          data-aos-duration="1800"
+          className="mt-2 font-semibold text-accent ">
             For <span>{status}</span>{" "}
           </p>
         </div>
         <div className="mt-8 ">
-          <Link
+          <Link 
+          data-aos="zoom-in-right"
+          data-aos-delay="2000 "
+          data-aos-duration="2000"
             to={`/cardDetails/${id}`}
             className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden  border border-accent/50 font-medium transition-all bg-white rounded hover:bg-white group"
           >

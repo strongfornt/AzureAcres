@@ -9,9 +9,18 @@ export default function FeaturedIn() {
   return (
     <>
     <div className="mt-5">
-    <h1 className=" font-bold text-4xl sm:text-4xl lg:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient" >Featured In</h1>
+    <h1 
+    data-aos="zoom-in-right"
+    data-aos-delay="1000 "
+    data-aos-duration="1200"
+    className=" font-bold text-4xl sm:text-4xl lg:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient" >Featured In</h1>
     </div>
-      <div className="mt-5 mb-10 " >
+      <div 
+      
+      data-aos="zoom-in"
+              data-aos-delay="1000 "
+              data-aos-duration="1500"
+      className="mt-5 mb-10 " >
         
       <Marquee pauseOnHover={true} >
   <div className=" gap-16 md:gap-32 flex">

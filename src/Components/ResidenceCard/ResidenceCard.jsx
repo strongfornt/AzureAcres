@@ -8,7 +8,11 @@ export default function ResidenceCard() {
   return (
     <>
       <div>
-        <h1 className=" font-bold text-4xl sm:text-4xl lg:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">
+        <h1 
+        data-aos="zoom-in-right"
+        data-aos-delay="1000 "
+        data-aos-duration="1200"
+        className=" font-bold text-4xl sm:text-4xl lg:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">
           Our Popular Residence
         </h1>
       </div>

@@ -8,11 +8,13 @@ import PrivateRoute from "../PrivateRouute/PrivateRoute";
 import UpProfile from "../Pages/Profile/UpProfile";
 
 import CardDetails from "../Components/ResidenceCard/CardDetails";
+import Error from "../Components/Error/Error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement:<Error/>,
     children: [
       {
         path: "/",
