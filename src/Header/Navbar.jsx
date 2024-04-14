@@ -24,7 +24,7 @@ export default function Navbar() {
           isActive
             ? " text-accent w-fit text-sm font-medium "
             : `text-sm w-fit  font-medium ${
-                location.pathname == "/" ? "text-white" : "text-black/60 "
+                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
               } `
         }
       >
@@ -44,7 +44,7 @@ export default function Navbar() {
           isActive
             ? "text-accent w-fit text-sm font-medium "
             : `text-sm w-fit ${
-                location.pathname == "/" ? "text-white" : "text-black/60 "
+                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
               } font-medium `
         }
       >
@@ -63,7 +63,7 @@ export default function Navbar() {
           isActive
             ? "text-accent text-sm font-medium w-fit"
             : `text-sm ${
-                location.pathname == "/" ? "text-white" : "text-black/60 "
+                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
               }  font-medium  w-fit `
         }
       >
@@ -83,7 +83,7 @@ export default function Navbar() {
             isActive
               ? "  text-accent text-sm font-medium w-fit "
               : ` text-sm ${
-                  location.pathname == "/" ? "text-white" : "text-black/60 "
+                  location.pathname == "/" ? "lg:text-white" : "text-black/60 "
                 }   font-medium w-fit `
           }
         >
@@ -104,7 +104,7 @@ export default function Navbar() {
               isActive
                 ? "  text-accent text-sm font-medium w-fit "
                 : ` text-sm ${
-                    location.pathname == "/" ? "text-white" : "text-black/60 "
+                    location.pathname == "/" ? "lg:text-white" : "text-black/60 "
                   }    font-medium w-fit `
             }
           >
@@ -126,7 +126,7 @@ export default function Navbar() {
           isActive
             ? "text-accent text-sm font-medium w-fit"
             : `text-sm ${
-                location.pathname == "/" ? "text-white" : "text-black/60 "
+                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
               }  font-medium w-fit `
         }
       >
@@ -234,7 +234,7 @@ export default function Navbar() {
             {navRoute}
           </ul>
         </div>
-        <div className="navbar-end gap-2 hidden md:flex  ">
+        <div className="navbar-end gap-2 flex  ">
           {loading ? (
             <div className=" flex items-center gap-1">
               <div
@@ -249,7 +249,7 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className=" px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                className=" hidden md:flex px-2 py-1   relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
               >
                 <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
                 <span className="relative group-hover:text-white">Logout</span>
@@ -258,7 +258,7 @@ export default function Navbar() {
           ) : user ? (
             <div className=" flex   items-center gap-1">
               <div
-                className="tooltip-bottom tooltip  flex items-center "
+                className=" tooltip-left md:tooltip-bottom tooltip  flex items-center "
                 data-tip={user?.displayName || "Name: Null"}
               >
                 <div className="avatar">
@@ -269,7 +269,7 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className=" px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                className=" hidden md:flex px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
               >
                 <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
                 <span className="relative group-hover:text-white">Logout</span>
@@ -278,7 +278,7 @@ export default function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="    px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+              className=" md:flex hidden   px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
             >
               <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
               <span className="relative group-hover:text-white">Login</span>

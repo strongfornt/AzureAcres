@@ -2,43 +2,40 @@ import { useContext } from "react";
 import { AuthContext } from "../../ContextProvider/ContextProvider";
 import profile from "./../../assets/house/deFaultProfile1.png";
 import { Helmet } from "react-helmet-async";
-
+import auth from "../../Firebase/firebase.config";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function UpProfile() {
   const { user, updateUserProfile, setUser } = useContext(AuthContext);
-
-  
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const photo = e.target.photo.value;
-    console.log(name, photo);
-    //  setUser2(user)
-    updateUserProfile(user, {
+    
+    
+    updateUserProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     })
       .then(() => {
-        console.log("update form profile", user);
-        setUser({...user,displayName:name,photoURL:photo});
+        toast.success('Your profile has been updated! 🎉')
+        setUser({ ...user, displayName: name, photoURL: photo });
       })
-      .catch((err) => console.log("profile", err));
-    
+      .catch(() => toast.error('Update failed. Try again') );
 
     // e.target.name.defaultValue = user?.displayName;
+   
     e.target.reset();
-  
   };
 
-
+  
   return (
     <>
-    <Helmet>
-        <title>
-        AzureAcres | UpdateProfile
-        </title>
-    </Helmet>
+     <Toaster />
+      <Helmet>
+        <title>AzureAcres | UpdateProfile</title>
+      </Helmet>
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -77,7 +74,7 @@ export default function UpProfile() {
                   Name
                 </label>
                 <input
-                    defaultValue={user?.displayName ||''}
+                  defaultValue={user?.displayName || ""}
                   type="text"
                   name="name"
                   id="name"
