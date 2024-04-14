@@ -1,0 +1,5 @@
+/* Class to blur the main content */
+.blur-effect {
+    filter: blur(5px);
+    pointer-events: none; /* Prevent clicks and interactions */
+}

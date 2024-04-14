@@ -4,8 +4,8 @@ import logo from '../assets/house/a.png'
 export default function Footer() {
   return (
     <>
-    <footer data-aos="fade-up"  data-aos-duration="1000"  className="px-4 divide-y border-t ">
-	<div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
+    <footer data-aos="fade-up"  data-aos-duration="1000"  className="px-4 divide-y border-t rounded-t-xl ">
+	<div className="container  flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
 		<div className="lg:w-1/3">
 			<a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 lg:justify-start">
 			<div className="flex items-center justify-center w-12 h-12 rounded-full ">

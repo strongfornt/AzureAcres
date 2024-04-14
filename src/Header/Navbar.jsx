@@ -1,9 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../ContextProvider/ContextProvider";
 import profile from "./../assets/house/deFaultProfile1.png";
 import { useLocation } from "react-router-dom";
+import { calculateScrollbarWidth } from "./ScrollBar";
+import "./Nav.css";
 import OutsideClickHandler from "react-outside-click-handler";
+import { SiReactrouter } from "react-icons/si";
 
 export default function Navbar() {
   const location = useLocation();
@@ -14,7 +17,20 @@ export default function Navbar() {
       .catch(() => console.log("something is wrong"));
   };
 
-  // console.log('from navbar',user);
+  const disableScrolling = () => {
+    const scrollbarWidth = calculateScrollbarWidth();
+
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+    document.body.style.overflow = "hidden";
+  };
+
+  const enableScrolling = () => {
+    document.body.style.paddingRight = "0";
+
+    document.body.style.overflow = "auto";
+  };
+
   const navRoute = (
     <>
       <NavLink
@@ -22,9 +38,9 @@ export default function Navbar() {
         onClick={() => setMenu(!menu)}
         className={({ isActive }) =>
           isActive
-            ? " text-accent w-fit text-sm font-medium "
-            : `text-sm w-fit  font-medium ${
-                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+            ? ` text-accent w-fit text-sm font-medium  `
+            : `text-sm w-fit  font-medium  ${
+                location.pathname == "/" ? "text-white" : "text-black/60 "
               } `
         }
       >
@@ -44,7 +60,7 @@ export default function Navbar() {
           isActive
             ? "text-accent w-fit text-sm font-medium "
             : `text-sm w-fit ${
-                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+                location.pathname == "/" ? "text-white" : "text-black/60 "
               } font-medium `
         }
       >
@@ -63,7 +79,7 @@ export default function Navbar() {
           isActive
             ? "text-accent text-sm font-medium w-fit"
             : `text-sm ${
-                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+                location.pathname == "/" ? "text-white" : "text-black/60 "
               }  font-medium  w-fit `
         }
       >
@@ -83,7 +99,7 @@ export default function Navbar() {
             isActive
               ? "  text-accent text-sm font-medium w-fit "
               : ` text-sm ${
-                  location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+                  location.pathname == "/" ? "text-white" : "text-black/60 "
                 }   font-medium w-fit `
           }
         >
@@ -104,7 +120,7 @@ export default function Navbar() {
               isActive
                 ? "  text-accent text-sm font-medium w-fit "
                 : ` text-sm ${
-                    location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+                    location.pathname == "/" ? "text-white" : "text-black/60 "
                   }    font-medium w-fit `
             }
           >
@@ -126,7 +142,7 @@ export default function Navbar() {
           isActive
             ? "text-accent text-sm font-medium w-fit"
             : `text-sm ${
-                location.pathname == "/" ? "lg:text-white" : "text-black/60 "
+                location.pathname == "/" ? "text-white" : "text-black/60 "
               }  font-medium w-fit `
         }
       >
@@ -142,8 +158,6 @@ export default function Navbar() {
   );
   const [menu, setMenu] = useState(false);
 
-  //  console.log(location);
-
   return (
     <div className="">
       <div
@@ -153,74 +167,6 @@ export default function Navbar() {
       >
         {/* menu bar start */}
         <div className=" navbar-start relative gap-2  ">
-          <div className="items-center flex   lg:hidden">
-            <label  className=" swap swap-rotate  border-none  ">
-              {/* this hidden checkbox controls the state */}
-              <input
-                type="checkbox"
-                onChange={() => {
-                setMenu(!menu)
-                 
-                }}
-                checked={menu ? true : false}
-              />
-
-              {/* hamburger icon */}
-
-              <svg
-                className={`swap-off fill-current ${
-                  location.pathname == "/" && "text-white"
-                }`}
-                xmlns="http://www.w3.org/2000/svg"
-                width="26"
-                height="26"
-                viewBox="0 0 512 512"
-              >
-                <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-              </svg>
-
-              {/* close icon */}
-              <svg
-                className={`swap-on fill-current ${
-                  location.pathname == "/" && "text-white"
-                }`}
-                xmlns="http://www.w3.org/2000/svg"
-                width="26"
-                height="26"
-                viewBox="0 0 512 512"
-              >
-                <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-              </svg>
-            </label>
-          </div>
-       
-            <ul
-              tabIndex={0}
-              className={`menu absolute top-10 -left-60  menu-sm lg:hidden   text-xl  dropdown-content border-r border-t border-b border-success border-opacity-60 
-                   mt-3 z-[10] p-2 shadow-xl bg-base-100 rounded-r-xl w-max  gap-3 py-5  ${
-                     menu && "-left-[16px] duration-300  "
-                   }`}
-            >
-              {navRoute}
-
-              <li className="mt-5">
-                <a className="relative inline-flex items-center justify-start border border-success btn btn-sm cursor-pointer overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group">
-                  <span className="w-48 h-48 rounded rotate-[-40deg] bg-success absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                  <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
-                    Sign in
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a className="relative inline-flex items-center justify-start border border-info btn btn-sm overflow-hidden font-medium transition-all bg-white rounded hover:bg-white group">
-                  <span className="w-48 h-48 rounded rotate-[-40deg] bg-info absolute bottom-0 left-0 -translate-x-full ease-out duration-500 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0"></span>
-                  <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white">
-                    Sign up
-                  </span>
-                </a>
-              </li>
-            </ul>
-        
           <div>
             <a className="font-extrabold  text-2xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">
               AzureAcres
@@ -235,11 +181,165 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end gap-2 flex  ">
+          <OutsideClickHandler onOutsideClick={() => setMenu(false)}>
+            <div className="items-center flex   lg:hidden">
+              <label className=" swap swap-rotate  border-none  ">
+                {/* this hidden checkbox controls the state */}
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    setMenu(!menu);
+                    menu ? enableScrolling() : disableScrolling();
+                  }}
+                  checked={menu ? true : false}
+                />
+
+                {/* hamburger icon */}
+
+                <svg
+                  className={`swap-off fill-current z-30 ${
+                    location.pathname == "/" && "text-white"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="26"
+                  viewBox="0 0 512 512"
+                >
+                  <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                </svg>
+
+                {/* close icon */}
+                <svg
+                  className={`swap-on fill-current z-30 ${
+                    location.pathname == "/" && "text-white"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="26"
+                  viewBox="0 0 512 512"
+                >
+                  <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
+                </svg>
+              </label>
+            </div>
+
+            <ul
+              tabIndex={0}
+              className={`menu absolute mr-6  -top-3 -right-64 min-w-56 menu-sm lg:hidden text-xl  dropdown-content border-l border-t  border-success border-opacity-60 
+                   mt-3 z-[10] shadow-lg ${
+                     location.pathname == "/" ? "bg-gray-800" : "bg-base-100"
+                   }  min-h-screen  rounded-l-xl w-max  gap-2    ${
+                menu && "-right-[20px] duration-500 transition-all "
+              }`}
+            >
+              {user && (
+                <li className="flex  items-center mt-8   ">
+                  <div className="avatar">
+                    <div className="w-10 rounded-full ring-1 ring-accent ring-offset-base-100 ring-offset-2">
+                      <img src={user?.photoURL || profile} />
+                    </div>
+                  </div>
+                  <div>
+                    <h2
+                      className={`text-lg font-bold  ${
+                        location.pathname == "/"
+                          ? "text-white"
+                          : "text-[#191515]"
+                      }`}
+                    >
+                      {user?.displayName || "Anonymous"}
+                    </h2>
+                  </div>
+                </li>
+              )}
+
+              <li
+                className={` rounded-sm ${
+                  location.pathname == "/"
+                    ? "bg-base-200 text-gray-900 "
+                    : "bg-gray-800 text-white"
+                } ${user ?'':'mt-16'} `}
+              >
+                <p className={`flex items-center p-2 space-x-3 rounded-md  `}>
+                  <SiReactrouter
+                    className={`text-xl  ${
+                      location.pathname == "/" ? "text-red-800" : "text-white"
+                    } `}
+                  />
+                  <span>Route</span>
+                </p>
+              </li>
+              {navRoute}
+
+              <div
+                className={`${
+                  location.pathname == "/" ? "bg-base-200" : "bg-gray-800"
+                } w-full inline-flex h-[1px] my-2`}
+              ></div>
+              <li className="">
+                {user ? (
+                  <button
+                    onClick={handleLogout}
+                    className={`flex px-2 py-1 w-fit  relative rounded group overflow-hidden font-medium border-b  
+              ${
+                location.pathname == "/"
+                  ? "border-base-200 text-base-200"
+                  : "border-gray-800 text-gray-800"
+              }
+              `}
+                  >
+                    <span
+                      className={`absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 ${
+                        location.pathname == "/" ? "bg-base-200" : "bg-gray-800"
+                      } group-hover:h-full opacity-90`}
+                    ></span>
+                    <span
+                      className={`relative ${
+                        location.pathname == "/"
+                          ? "group-hover:text-gray-800"
+                          : "group-hover:text-white"
+                      }`}
+                    >
+                      Logout
+                    </span>
+                  </button>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setMenu(false)}
+                    className={`flex px-2 py-1 w-fit  relative rounded group overflow-hidden font-medium border-b  
+              ${
+                location.pathname == "/"
+                  ? "border-base-200 text-base-200"
+                  : "border-gray-800 text-gray-800"
+              }
+              `}
+                  >
+                    <span
+                      className={`absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 ${
+                        location.pathname == "/" ? "bg-base-200" : "bg-gray-800"
+                      } group-hover:h-full opacity-90`}
+                    ></span>
+                    <span
+                      className={`relative ${
+                        location.pathname == "/"
+                          ? "group-hover:text-gray-800"
+                          : "group-hover:text-white"
+                      }`}
+                    >
+                      Login
+                    </span>
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </OutsideClickHandler>
+
           {loading ? (
-            <div className=" flex items-center gap-1">
+            <div className="  hidden lg:flex items-center gap-1">
               <div
                 className="tooltip-bottom tooltip flex items-center"
-                data-tip={user?.displayName || "Name: Null"}
+                data-tip={user?.displayName || "Anonymous"}
               >
                 <div className="avatar">
                   <div className="w-8 rounded-full tooltip ">
@@ -249,17 +349,17 @@ export default function Navbar() {
               </div>
               <button
                 onClick={handleLogout}
-                className=" hidden md:flex px-2 py-1   relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+                className=" hidden lg:flex px-2 py-1   relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
               >
                 <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
                 <span className="relative group-hover:text-white">Logout</span>
               </button>
             </div>
           ) : user ? (
-            <div className=" flex   items-center gap-1">
+            <div className=" lg:flex hidden  items-center gap-1">
               <div
                 className=" tooltip-left md:tooltip-bottom tooltip  flex items-center "
-                data-tip={user?.displayName || "Name: Null"}
+                data-tip={user?.displayName || "Anonymous"}
               >
                 <div className="avatar">
                   <div className="w-8 rounded-full tooltip  ">
@@ -278,7 +378,7 @@ export default function Navbar() {
           ) : (
             <Link
               to="/login"
-              className=" md:flex hidden   px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
+              className=" lg:flex hidden   px-2 py-1 relative rounded group overflow-hidden font-medium border border-accent/20 text-accent inline-block"
             >
               <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-accent group-hover:h-full opacity-90"></span>
               <span className="relative group-hover:text-white">Login</span>
