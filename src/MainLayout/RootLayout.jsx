@@ -14,7 +14,7 @@ export default function RootLayout() {
    
       <div>
         <ScrollToTop/>
-      <header className="h-16 ">
+      <header className="">
             <Navbar/>
         </header>
         <main>
@@ -23,7 +23,7 @@ export default function RootLayout() {
               navigation.state ==='loading'? <Spiner/> : <Outlet/>
             }
         </main>
-        <footer>
+        <footer className=" px-2" >
             <Footer/>
         </footer>
       </div>

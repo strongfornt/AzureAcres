@@ -19,30 +19,42 @@ export default function Register() {
     handleSubmit,
     reset,
     // watch,
-    formState: { errors },
+    formState: { errors ,isSubmitted},
   } = useForm();
 
+  const validatePassword = (password) => {
+    if (!/[A-Z]/.test(password)) {
+        return "Missing Uppercase letters in your password!";
+    }
+    if (!/[a-z]/.test(password)) {
+        return "Missing lowercase letters in your password!";
+    }
+    
+    return true; 
+};
+  
   const formSubmit = (data) => {
     const { name, photo, email, password } = data;
     createUser(email, password)
       .then((users) => {
         const user = users.user;
-        toast.success('User creation succeeded')
+        toast.success('Account created! Welcome!')
         //update profile
         updateUserProfile(user, {
           displayName: name,
           photoURL: photo,
         })
-          .then(() => console.log("Profile updated successfully "))
-          .catch((err) => console.log("error from Profile Update", err));
+          .then(() =>{})
+          .catch(() => {});
         
       })
-      .catch(() => toast.error('User already exist'))
+      .catch(() => toast.error('User already exist!'))
 
       reset();
    
   };
 
+  
 
   return (
     <>
@@ -74,7 +86,7 @@ export default function Register() {
               data-aos-duration="1000"
               className="text-sm dark:text-gray-600  "
             >
-              Register to get an account
+              Register now and be part of our community!
             </p>
           </div>
           <form
@@ -150,15 +162,10 @@ export default function Register() {
                 <input
                   required
                   {...register("password", {
-                    pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
-                      message:
-                        "Password must contain at least one uppercase and lowercase letter",
-                    },
-
+                    validate:validatePassword,
                     minLength: {
                       value: 6,
-                      message: "password must be at least six characters long",
+                      message: "Password must be 6 characters or longer!",
                     },
                   })}
                   type={passToggle ? "text" : "password"}
@@ -168,7 +175,7 @@ export default function Register() {
                   className="w-full px-3 py-2 border rounded-md border-gray-300  bg-transparent text-gray-800 outline-none focus:ring-1 focus:ring-accent/80 "
                 />
 
-                {errors.password && (
+                {errors.password && isSubmitted && (
                   <p className="text-sm text-red-600">
                     {errors.password.message}
                   </p>

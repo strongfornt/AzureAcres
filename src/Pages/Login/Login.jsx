@@ -14,7 +14,7 @@ export default function Login() {
  
   const navigate = useNavigate();
 
-  const { signInUser, googleLogin, user } = useContext(AuthContext);
+  const { signInUser, googleLogin, user,githubLogin } = useContext(AuthContext);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ export default function Login() {
     const password = e.target.password.value;
     signInUser(email, password)
       .then(() => {
-        toast.success("Logged in successfully");
+        toast.success("You're in! Welcome back!");
       })
       .catch(() => {
         toast.error("invalid password or email");
@@ -33,13 +33,25 @@ export default function Login() {
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
-        toast.success("Logged in successfully");
+        toast.success("You're in! Welcome back!");
       })
-      .catch((err) => {
-        toast.error("invalid password or email");
-        console.log(err, "from google");
+      .catch(() => {
+        toast.error("Sign-in error. Check connection.");
+       
       });
   };
+
+  const handleGithubLogin =() =>{
+      githubLogin()
+      .then(()=>{
+        toast.success("You're in! Welcome back!");
+      })
+      .catch(()=>{
+        toast.error("Sign-in error. Check connection.");
+      })
+  }
+
+
 
   useEffect(() => {
     if (user) {
@@ -96,6 +108,7 @@ export default function Login() {
               <p>Login with Google</p>
             </button>
             <button
+            onClick={handleGithubLogin}
               data-aos="zoom-in"
               data-aos-delay="500 "
               data-aos-duration="1000"
@@ -130,6 +143,7 @@ export default function Login() {
                   Email address
                 </label>
                 <input
+                required
                   type="email"
                   name="email"
                   id="email"
@@ -150,6 +164,7 @@ export default function Login() {
                   </a>
                 </div>
                 <input
+                required
                   type="password"
                   name="password"
                   id="password"

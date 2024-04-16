@@ -9,10 +9,10 @@ export default function GetInTouch() {
       </title>
     </Helmet>
 
-      <div data-aos="fade-up"  data-aos-duration="1000" className="  my14  md:my-20 flex flex-col items-center justify-center">
+      <div data-aos="fade-up"  data-aos-duration="1000" className=" my-10 max-w-screen-lg mx-auto  md:my-20 flex flex-col items-center justify-center">
         <section className="py-6  w-full">
-          <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
-            <div className="py-6 md:py-0 md:px-6">
+          <div className="grid   grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
+            <div className="py-6 md:py-0 md:px-6 ">
               <h1 
               data-aos="zoom-in" data-aos-delay="500 " data-aos-duration="1000" 
               className="text-4xl font-bold bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">

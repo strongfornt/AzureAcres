@@ -12,7 +12,7 @@ export default function Card({data}) {
       data-aos="zoom-in-up"
       data-aos-delay="500 "
       data-aos-duration="1000"
-      className=" p-6 rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900 ">
+      className=" p-6  rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900 ">
        <div className="rounded-md overflow-hidden">
        <img
 
@@ -24,21 +24,21 @@ export default function Card({data}) {
        </div>
         <div className="mt-6 mb-2">
           <span 
-          data-aos="zoom-in-right"
+          data-aos="zoom-in-up"
           data-aos-delay="1000 "
           data-aos-duration="1200"
           className="block text-xs font-medium tracking-widest uppercase dark:text-accent">
            {segment_name}
           </span>
           <h2 
-          data-aos="zoom-in-right"
+          data-aos="zoom-in-up"
           data-aos-delay="1200 "
           data-aos-duration="1200"
           className="text-xl font-semibold tracking-wide">
             {estate_title}
           </h2>
           <p 
-          data-aos="zoom-in-right"
+          data-aos="zoom-in-up"
           data-aos-delay="1400 "
           data-aos-duration="1400"
           className="flex items-center gap-1 ">
@@ -51,7 +51,7 @@ export default function Card({data}) {
           </p>
         </div>
         <p 
-        data-aos="zoom-in-right"
+        data-aos="zoom-in-up"
         data-aos-delay="1600 "
         data-aos-duration="1600"
         className="dark:text-gray-800 text-sm text-white ">
@@ -60,12 +60,12 @@ export default function Card({data}) {
 
         <div className="flex justify-between items-center ">
           <p 
-          data-aos="zoom-in-right"
+          data-aos="zoom-in-up"
           data-aos-delay="1800 "
           data-aos-duration="1800"
           className="mt-2 font-semibold text-gray-800 ">{price}</p>
           <p 
-          data-aos="zoom-in-left"
+          data-aos="zoom-in-up"
           data-aos-delay="1800 "
           data-aos-duration="1800"
           className="mt-2 font-semibold text-accent ">
@@ -74,7 +74,7 @@ export default function Card({data}) {
         </div>
         <div className="mt-8 ">
           <Link 
-          data-aos="zoom-in-right"
+          data-aos="zoom-in"
           data-aos-delay="2000 "
           data-aos-duration="2000"
             to={`/cardDetails/${id}`}

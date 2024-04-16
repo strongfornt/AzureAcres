@@ -19,7 +19,9 @@ export default function Subscribe() {
 		data-aos="zoom-in"
 		data-aos-delay="1400 "
 		data-aos-duration="1400"
-		className="text-base font-medium text-center text-white">Subscribe and find super attractive price quotes from us. find your residence soon..</p>
+		className="text-base font-medium text-center text-white">
+			Begin your adventure with us and discover a world of luxury properties and unparalleled experiences. Let us help you find your dream destination.
+		</p>
 		<div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
 			<Link
 

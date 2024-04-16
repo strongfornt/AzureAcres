@@ -39,16 +39,16 @@ export default function CardDetails() {
         <title>AzureAcres | cardDetails/{id}</title>
       </Helmet>
       <div
-        data-aos="zoom-in-down"
+        data-aos="zoom-in"
         data-aos-delay="1000 "
         data-aos-duration="1000"
         className="px-4 md:px-8 lg:px-10"
       >
-        <section className=" ">
-          <div className="container flex flex-col-reverse justify-center  mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between xl:justify-evenly ">
+        <section className="  ">
+          <div className="container flex flex-col-reverse justify-center  mx-auto sm:my-12 lg:mt-20 lg:mb-16 lg:flex-row lg:justify-between xl:justify-evenly ">
             <div className="flex flex-col justify-center text-start rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
               <h1
-                data-aos="zoom-in-right"
+                data-aos="zoom-in"
                 data-aos-delay="1200 "
                 data-aos-duration="1200"
                 className="text-3xl font-bold leading-none sm:text-4xl text-[#383737]  "
@@ -68,15 +68,26 @@ export default function CardDetails() {
                 </span>
               </p>
               {/* rent and price */}
-              <div className="space-x-4 sm:space-x-6 my-2">
-                <button
+              <div className="mt-2"  >
+              <button
                   data-aos="zoom-in-right"
-                  data-aos-delay="1600 "
-                  data-aos-duration="1600"
-                  className="px-4 py-1 bg-accent rounded-md text-white font-semibold"
+                  data-aos-delay="2000 "
+                  data-aos-duration="2000"
+                  className="px-4 py-1 bg-info rounded-md text-white font-semibold"
                 >
-                  {price}
+                  Area - {area}
                 </button>
+              </div>
+              <div className="space-x-4 sm:space-x-6 my-2 ">
+               <button
+                  data-aos="zoom-in-right"
+                  data-aos-delay="2000 "
+                  data-aos-duration="2000"
+                  className="px-4 py-1 bg-accent rounded-md  text-white font-semibold"
+                >
+                  {segment_name}
+                </button>
+              
                 <button
                   data-aos="zoom-in"
                   data-aos-delay="1800 "
@@ -84,17 +95,17 @@ export default function CardDetails() {
                   className="px-4 py-1 bg-red-600 rounded-md text-white font-semibold"
                 >
                   {" "}
-                  {segment_name} For {status}
+                   For {status}
                 </button>
               </div>
               <div>
-                <button
+              <button
                   data-aos="zoom-in-right"
-                  data-aos-delay="2000 "
-                  data-aos-duration="2000"
+                  data-aos-delay="1600 "
+                  data-aos-duration="1600"
                   className="px-4 py-1 bg-info rounded-md text-white font-semibold"
                 >
-                  Area - {area}
+                  {price}
                 </button>
               </div>
               <p
@@ -121,14 +132,14 @@ export default function CardDetails() {
                   data-aos="zoom-in-right"
                   data-aos-delay="2600 "
                   data-aos-duration="2600"
-                  className="list-disc list-inside text-base text-[#968f8f] ml-2"
+                  className="list-disc list-inside text-base text-[#968f8f] ml-2 mb-8"
                 >
                   {facilities.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
 
-                <div className="mt-8">
+                {/* <div className="mt-8">
                   <h1 className="text-3xl mb-3 font-bold leading-none sm:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient  ">
                     Location on map -
                   </h1>
@@ -164,7 +175,7 @@ export default function CardDetails() {
                       })}
                     </MapContainer>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="flex   items-center lg:px-6 xl:px-0  justify-center rounded-xl  mb-8 lg:mt-0 h-80 sm:h-80 lg:h-80 xl:h-112 2xl:h-128">

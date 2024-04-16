@@ -8,7 +8,7 @@ import client5 from './../../assets/house/client-6.png'
 export default function FeaturedIn() {
   return (
     <>
-    <div className="mt-5">
+    <div className="mt-5 last:">
     <h1 
     data-aos="zoom-in-right"
     data-aos-delay="1000 "

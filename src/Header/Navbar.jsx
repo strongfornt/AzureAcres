@@ -159,14 +159,14 @@ export default function Navbar() {
   );
 
   return (
-    <div className="">
+    <div className="relative ">
       <div
         className={`navbar  px-4 md:px-6 lg:px-10 shadow-sm  ${
           location.pathname == "/" ? "bg-gray-800 z-10 shadow-lg" : "bg-white"
         }`}
       >
         {/* menu bar start */}
-        <div className=" navbar-start relative gap-2  ">
+        <div className=" navbar-start gap-2  ">
           <div>
             <a className="font-extrabold  text-2xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient">
               AzureAcres
@@ -227,11 +227,11 @@ export default function Navbar() {
 
             <ul
               tabIndex={0}
-              className={`menu absolute mr-6  -top-3 -right-64 min-w-56 menu-sm md:hidden text-xl  dropdown-content border-l border-t  border-success border-opacity-60 
+              className={`menu absolute mr-6  -left-64 -translate-y-[3.5rem] min-w-60 menu-sm md:hidden text-xl  dropdown-content border-r   border-success border-opacity-60 
                    mt-3 z-[10] shadow-lg ${
                      location.pathname == "/" ? "bg-gray-800" : "bg-base-100"
-                   }  min-h-screen  rounded-l-xl w-max  gap-2    ${
-                menu && "-right-[20px] duration-500 transition-all "
+                   }  min-h-screen  rounded-r-xl   gap-2    ${
+                menu && " -left-[0.1rem]  duration-300 transition-all  "
               }`}
             >
               {user && (
@@ -281,7 +281,10 @@ export default function Navbar() {
               <li className="">
                 {user ? (
                   <button
-                    onClick={handleLogout}
+                    onClick={()=>{
+                      handleLogout()
+                      setMenu(false)
+                    }}
                     className={`flex px-2 py-1 w-fit  relative rounded group overflow-hidden font-medium border-b  
               ${
                 location.pathname == "/"
