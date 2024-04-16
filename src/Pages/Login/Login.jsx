@@ -46,8 +46,9 @@ export default function Login() {
       .then(()=>{
         toast.success("You're in! Welcome back!");
       })
-      .catch(()=>{
+      .catch((err)=>{
         toast.error("Sign-in error. Check connection.");
+        console.log('github',err)
       })
   }
 

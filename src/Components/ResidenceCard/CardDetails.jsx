@@ -19,7 +19,7 @@ export default function CardDetails() {
   //  console.log(data);
   const dataSingle = data.find((item) => item.id === id);
 
-  console.log(dataSingle);
+
   const {
     estate_title,
     segment_name,
@@ -45,7 +45,7 @@ export default function CardDetails() {
         className="px-4 md:px-8 lg:px-10"
       >
         <section className="  ">
-          <div className="container flex flex-col-reverse justify-center  mx-auto sm:my-12 lg:mt-20 lg:mb-16 lg:flex-row lg:justify-between xl:justify-evenly ">
+          <div className="container flex flex-col-reverse justify-center my-8  mx-auto sm:my-12 lg:mt-20 lg:mb-16 lg:flex-row lg:justify-between xl:justify-evenly ">
             <div className="flex flex-col justify-center text-start rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
               <h1
                 data-aos="zoom-in"
@@ -132,19 +132,28 @@ export default function CardDetails() {
                   data-aos="zoom-in-right"
                   data-aos-delay="2600 "
                   data-aos-duration="2600"
-                  className="list-disc list-inside text-base text-[#968f8f] ml-2 mb-8"
+                  className="list-disc list-inside text-base text-[#968f8f] ml-2 "
                 >
                   {facilities.map((item, idx) => (
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
 
-                {/* <div className="mt-8">
-                  <h1 className="text-3xl mb-3 font-bold leading-none sm:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient  ">
+                <div className="mt-8">
+                  <h1 
+                   data-aos="zoom-in"
+                   data-aos-delay="2600 "
+                   data-aos-duration="2600"
+                  
+                  className="text-3xl mb-3 font-bold leading-none sm:text-4xl  bg-300%  bg-gradient-to-r from-accent/75 via-info/75 to-success/75 text-transparent bg-clip-text animate-gradient  ">
                     Location on map -
                   </h1>
 
-                  <div className="rounded-xl">
+                  <div 
+                   data-aos="zoom-in"
+                   data-aos-delay="2600 "
+                   data-aos-duration="2600"
+                  className="rounded-xl mb-4 ">
                     <MapContainer
                       center={center}
                       zoom={10}
@@ -175,7 +184,7 @@ export default function CardDetails() {
                       })}
                     </MapContainer>
                   </div>
-                </div> */}
+                </div>
               </div>
             </div>
             <div className="flex   items-center lg:px-6 xl:px-0  justify-center rounded-xl  mb-8 lg:mt-0 h-80 sm:h-80 lg:h-80 xl:h-112 2xl:h-128">
