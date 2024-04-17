@@ -46,6 +46,12 @@ https://assignmentnine-ecc54.web.app/
 
 4.React-leaflet
 - Used only for displaying a demo map on the card details page.
+
+## Responsive Menu
+- You can't scroll on the page when the menu is open.
+
+- You can close the menu by clicking outside of the menu.
+
 ## Feedback
 
 If you have any feedback, please reach out to us at contact@azureacres.com
