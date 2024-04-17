@@ -48,7 +48,7 @@ export default function ContextProvider({ children }) {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         
-        // console.log("current user", currentUser);
+        
         setTimeout(()=>{
           setUser(currentUser);
             setLoading(false)

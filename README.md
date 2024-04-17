@@ -43,6 +43,7 @@ https://assignmentnine-ecc54.web.app/
 
 3.Swipper slider
 - I used it to slide the image into the banner.
+
 4.React-leaflet
 - Used only for displaying a demo map on the card details page.
 ## Feedback
